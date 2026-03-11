@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,258 +10,259 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html {
-    background: #FFFFFF;
-  }
+html {
+background: #FFFFFF;
+}
 
-  :root {
-    --bg: #F0EFED;
-    --surface: #FFFFFF;
-    --border: #dbd7cf;
-    --border-light: #e8e5df;
-    --text-primary: #2b2825;
-    --text-muted: #9a9288;
-    --text-light: #b5afa5;
-    --green-dark: #4a6741;
-    --green-mid: #6a9160;
-    --green-light: #8ab878;
-    --green-pale: #c2d9b8;
-    --pot-dark: #9e6e52;
-    --pot-mid: #b8856a;
-    --soil: #6b4c33;
-    --soil-light: #8c6240;
-  }
+:root {
+–bg: #F0EFED;
+–surface: #FFFFFF;
+–border: #dbd7cf;
+–border-light: #e8e5df;
+–text-primary: #2b2825;
+–text-muted: #9a9288;
+–text-light: #b5afa5;
+–green-dark: #4a6741;
+–green-mid: #6a9160;
+–green-light: #8ab878;
+–green-pale: #c2d9b8;
+–pot-dark: #9e6e52;
+–pot-mid: #b8856a;
+–soil: #6b4c33;
+–soil-light: #8c6240;
+}
 
-  body {
-    background: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    font-family: 'DM Sans', sans-serif;
-  }
+body {
+background: #FFFFFF;
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+font-family: ‘DM Sans’, sans-serif;
+}
 
-  .widget {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    width: 196px;
-    padding: 20px 18px 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 13px;
-    position: relative;
-    overflow: hidden;
-  }
+.widget {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 14px;
+width: 196px;
+padding: 20px 18px 18px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 13px;
+position: relative;
+overflow: hidden;
+}
 
-  .header {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    width: 100%;
-  }
+.header {
+display: flex;
+align-items: center;
+gap: 7px;
+width: 100%;
+}
 
-  .sparkle-icon {
-    color: var(--text-light);
-    font-size: 11px;
-    line-height: 1;
-  }
+.sparkle-icon {
+color: var(–text-light);
+font-size: 11px;
+line-height: 1;
+}
 
-  .title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px;
-    color: var(--text-primary);
-    font-weight: 400;
-    letter-spacing: 0.01em;
-  }
+.title {
+font-family: ‘DM Serif Display’, serif;
+font-size: 16px;
+color: var(–text-primary);
+font-weight: 400;
+letter-spacing: 0.01em;
+}
 
-  .divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border-light);
-    margin: -3px 0;
-  }
+.divider {
+width: 100%;
+height: 1px;
+background: var(–border-light);
+margin: -3px 0;
+}
 
-  /* Plant area */
-  .plant-area {
-    width: 128px;
-    height: 152px;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
+/* Plant area */
+.plant-area {
+width: 128px;
+height: 152px;
+position: relative;
+display: flex;
+align-items: flex-end;
+justify-content: center;
+}
 
-  .plant-svg {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+.plant-svg {
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+}
 
-  .sg { transition: opacity 0.7s ease; }
+.sg { transition: opacity 0.7s ease; }
 
-  /* Stage label */
-  .stage-label {
-    font-size: 10px;
-    color: var(--text-muted);
-    font-weight: 300;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-align: center;
-    min-height: 13px;
-  }
+/* Stage label */
+.stage-label {
+font-size: 10px;
+color: var(–text-muted);
+font-weight: 300;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+text-align: center;
+min-height: 13px;
+}
 
-  /* Progress dots */
-  .progress-dots {
-    display: flex;
-    gap: 5px;
-    min-height: 7px;
-  }
+/* Progress dots */
+.progress-dots {
+display: flex;
+gap: 5px;
+min-height: 7px;
+}
 
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--border);
-    transition: background 0.45s, transform 0.35s;
-  }
-  .dot.filled  { background: var(--green-pale); }
-  .dot.current { background: var(--green-mid); transform: scale(1.3); }
+.dot {
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: var(–border);
+transition: background 0.45s, transform 0.35s;
+}
+.dot.filled  { background: var(–green-pale); }
+.dot.current { background: var(–green-mid); transform: scale(1.3); }
 
-  /* Button */
-  .water-btn {
-    width: 100%;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 9px 0;
-    color: var(--text-primary);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    transition: background 0.18s, border-color 0.18s;
-  }
-  .water-btn:hover:not(:disabled)  { background: #eceae5; border-color: #ccc8be; }
-  .water-btn:active:not(:disabled) { background: #e5e1db; }
-  .water-btn:disabled { color: var(--text-light); border-color: var(--border-light); cursor: default; }
+/* Button */
+.water-btn {
+width: 100%;
+background: transparent;
+border: 1px solid var(–border);
+border-radius: 8px;
+padding: 9px 0;
+color: var(–text-primary);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 12px;
+font-weight: 400;
+letter-spacing: 0.03em;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+transition: background 0.18s, border-color 0.18s;
+}
+.water-btn:hover:not(:disabled)  { background: #eceae5; border-color: #ccc8be; }
+.water-btn:active:not(:disabled) { background: #e5e1db; }
+.water-btn:disabled { color: var(–text-light); border-color: var(–border-light); cursor: default; }
 
-  .watered-msg {
-    font-size: 10px;
-    color: var(--text-light);
-    font-style: italic;
-    font-weight: 300;
-    letter-spacing: 0.03em;
-    min-height: 13px;
-    text-align: center;
-  }
+.watered-msg {
+font-size: 10px;
+color: var(–text-light);
+font-style: italic;
+font-weight: 300;
+letter-spacing: 0.03em;
+min-height: 13px;
+text-align: center;
+}
 
-  /* Streak section */
-  .streak-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 9px 12px;
-    background: var(--bg);
-    border: 1px solid var(--border-light);
-    border-radius: 9px;
-  }
+/* Streak section */
+.streak-row {
+display: flex;
+align-items: center;
+justify-content: space-between;
+width: 100%;
+padding: 9px 12px;
+background: var(–bg);
+border: 1px solid var(–border-light);
+border-radius: 9px;
+}
 
-  .streak-left {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+.streak-left {
+display: flex;
+flex-direction: column;
+gap: 2px;
+}
 
-  .streak-label {
-    font-size: 9px;
-    color: var(--text-light);
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
+.streak-label {
+font-size: 9px;
+color: var(–text-light);
+font-weight: 400;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+}
 
-  .streak-count {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--text-primary);
-    line-height: 1;
-    letter-spacing: -0.01em;
-  }
+.streak-count {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 20px;
+font-weight: 300;
+color: var(–text-primary);
+line-height: 1;
+letter-spacing: -0.01em;
+}
 
-  .streak-count span {
-    font-size: 11px;
-    font-weight: 300;
-    color: var(--text-muted);
-    margin-left: 3px;
-  }
+.streak-count span {
+font-size: 11px;
+font-weight: 300;
+color: var(–text-muted);
+margin-left: 3px;
+}
 
-  .streak-badge {
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--green-mid);
-    background: var(--green-pale);
-    border-radius: 20px;
-    padding: 2px 7px;
-    opacity: 0;
-    transition: opacity 0.4s;
-    white-space: nowrap;
-    margin-top: 1px;
-  }
-  .streak-badge.visible { opacity: 1; }
+.streak-badge {
+font-size: 9px;
+font-weight: 500;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+color: var(–green-mid);
+background: var(–green-pale);
+border-radius: 20px;
+padding: 2px 7px;
+opacity: 0;
+transition: opacity 0.4s;
+white-space: nowrap;
+margin-top: 1px;
+}
+.streak-badge.visible { opacity: 1; }
 
-  @keyframes streakPop {
-    0%   { transform: scale(0.8); opacity: 0; }
-    65%  { transform: scale(1.08); opacity: 1; }
-    100% { transform: scale(1); opacity: 1; }
-  }
-  .streak-pop { animation: streakPop 0.5s cubic-bezier(0.34,1.5,0.64,1) forwards; }
+@keyframes streakPop {
+0%   { transform: scale(0.8); opacity: 0; }
+65%  { transform: scale(1.08); opacity: 1; }
+100% { transform: scale(1); opacity: 1; }
+}
+.streak-pop { animation: streakPop 0.5s cubic-bezier(0.34,1.5,0.64,1) forwards; }
 
-  /* Animations */
-  .drops-container {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    border-radius: 14px;
-  }
+/* Animations */
+.drops-container {
+position: absolute;
+inset: 0;
+pointer-events: none;
+overflow: hidden;
+border-radius: 14px;
+}
 
-  .drop {
-    position: absolute;
-    animation: dropFall 1s ease-in forwards;
-    pointer-events: none;
-  }
+.drop {
+position: absolute;
+animation: dropFall 1s ease-in forwards;
+pointer-events: none;
+}
 
-  @keyframes dropFall {
-    0%   { opacity: 0.7; transform: translateY(-8px); }
-    100% { opacity: 0;   transform: translateY(55px) scale(0.5); }
-  }
+@keyframes dropFall {
+0%   { opacity: 0.7; transform: translateY(-8px); }
+100% { opacity: 0;   transform: translateY(55px) scale(0.5); }
+}
 
-  @keyframes leafPop {
-    0%   { transform: translateX(-50%) scale(0.88); }
-    62%  { transform: translateX(-50%) scale(1.05); }
-    100% { transform: translateX(-50%) scale(1); }
-  }
-  .leaf-pop { animation: leafPop 0.6s cubic-bezier(0.34,1.5,0.64,1) forwards; }
+@keyframes leafPop {
+0%   { transform: translateX(-50%) scale(0.88); }
+62%  { transform: translateX(-50%) scale(1.05); }
+100% { transform: translateX(-50%) scale(1); }
+}
+.leaf-pop { animation: leafPop 0.6s cubic-bezier(0.34,1.5,0.64,1) forwards; }
 
-  @keyframes starAnim {
-    0%   { opacity: 0; transform: scale(0) rotate(0deg); }
-    50%  { opacity: 1; transform: scale(1.1) rotate(160deg); }
-    100% { opacity: 0; transform: scale(0) rotate(320deg); }
-  }
-  .star-burst { position: absolute; animation: starAnim 0.9s ease forwards; pointer-events: none; }
+@keyframes starAnim {
+0%   { opacity: 0; transform: scale(0) rotate(0deg); }
+50%  { opacity: 1; transform: scale(1.1) rotate(160deg); }
+100% { opacity: 0; transform: scale(0) rotate(320deg); }
+}
+.star-burst { position: absolute; animation: starAnim 0.9s ease forwards; pointer-events: none; }
 </style>
+
 </head>
 <body>
 <div class="widget">
@@ -276,79 +278,82 @@
   <div class="plant-area">
     <svg class="plant-svg" id="plantSvg" viewBox="0 0 108 165" width="108" height="165" xmlns="http://www.w3.org/2000/svg">
 
-      <!-- POT -->
-      <path d="M27 146 L34 165 L74 165 L81 146 Z" fill="var(--pot-dark)"/>
-      <rect x="23" y="141" width="62" height="9" rx="3.5" fill="var(--pot-mid)"/>
-      <ellipse cx="54" cy="142" rx="5.5" ry="2.2" fill="#c8977e" opacity="0.4"/>
-      <ellipse cx="54" cy="141" rx="25.5" ry="4.5" fill="var(--soil)"/>
-      <ellipse cx="54" cy="139.5" rx="25.5" ry="4.5" fill="var(--soil-light)"/>
+```
+  <!-- POT -->
+  <path d="M27 146 L34 165 L74 165 L81 146 Z" fill="var(--pot-dark)"/>
+  <rect x="23" y="141" width="62" height="9" rx="3.5" fill="var(--pot-mid)"/>
+  <ellipse cx="54" cy="142" rx="5.5" ry="2.2" fill="#c8977e" opacity="0.4"/>
+  <ellipse cx="54" cy="141" rx="25.5" ry="4.5" fill="var(--soil)"/>
+  <ellipse cx="54" cy="139.5" rx="25.5" ry="4.5" fill="var(--soil-light)"/>
 
-      <!-- STAGE 0: tiny sprout -->
-      <g id="stage0" class="sg" opacity="0">
-        <line x1="54" y1="139" x2="54" y2="120" stroke="var(--green-dark)" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M54 120 Q45 113 47 105 Q55 110 54 120Z" fill="var(--green-mid)"/>
-        <line x1="51" y1="114" x2="47" y2="107" stroke="var(--green-dark)" stroke-width="0.7" opacity="0.45"/>
-      </g>
+  <!-- STAGE 0: tiny sprout -->
+  <g id="stage0" class="sg" opacity="0">
+    <line x1="54" y1="139" x2="54" y2="120" stroke="var(--green-dark)" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M54 120 Q45 113 47 105 Q55 110 54 120Z" fill="var(--green-mid)"/>
+    <line x1="51" y1="114" x2="47" y2="107" stroke="var(--green-dark)" stroke-width="0.7" opacity="0.45"/>
+  </g>
 
-      <!-- STAGE 1: seedling -->
-      <g id="stage1" class="sg" opacity="0">
-        <line x1="54" y1="139" x2="54" y2="106" stroke="var(--green-dark)" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M54 118 Q41 108 43 96 Q53 102 54 118Z" fill="var(--green-mid)"/>
-        <path d="M54 110 Q66 100 64 89 Q55 96 54 110Z" fill="var(--green-light)"/>
-        <ellipse cx="54" cy="105" rx="4.5" ry="3" fill="var(--green-pale)" opacity="0.9"/>
-      </g>
+  <!-- STAGE 1: seedling -->
+  <g id="stage1" class="sg" opacity="0">
+    <line x1="54" y1="139" x2="54" y2="106" stroke="var(--green-dark)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M54 118 Q41 108 43 96 Q53 102 54 118Z" fill="var(--green-mid)"/>
+    <path d="M54 110 Q66 100 64 89 Q55 96 54 110Z" fill="var(--green-light)"/>
+    <ellipse cx="54" cy="105" rx="4.5" ry="3" fill="var(--green-pale)" opacity="0.9"/>
+  </g>
 
-      <!-- STAGE 2: small plant -->
-      <g id="stage2" class="sg" opacity="0">
-        <line x1="54" y1="139" x2="54" y2="88" stroke="var(--green-dark)" stroke-width="2.8" stroke-linecap="round"/>
-        <path d="M54 116 Q31 102 33 86 Q45 85 49 98 Q52 108 54 116Z" fill="var(--green-dark)"/>
-        <path d="M40 90 Q36 98 38 104" stroke="#f6f4f0" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <path d="M54 104 Q75 88 73 73 Q62 74 58 86 Q56 94 54 104Z" fill="var(--green-mid)"/>
-        <path d="M66 78 Q71 85 69 91" stroke="#f6f4f0" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <ellipse cx="54" cy="87" rx="5" ry="3.5" fill="var(--green-light)"/>
-      </g>
+  <!-- STAGE 2: small plant -->
+  <g id="stage2" class="sg" opacity="0">
+    <line x1="54" y1="139" x2="54" y2="88" stroke="var(--green-dark)" stroke-width="2.8" stroke-linecap="round"/>
+    <path d="M54 116 Q31 102 33 86 Q45 85 49 98 Q52 108 54 116Z" fill="var(--green-dark)"/>
+    <path d="M40 90 Q36 98 38 104" stroke="#f6f4f0" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M54 104 Q75 88 73 73 Q62 74 58 86 Q56 94 54 104Z" fill="var(--green-mid)"/>
+    <path d="M66 78 Q71 85 69 91" stroke="#f6f4f0" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="54" cy="87" rx="5" ry="3.5" fill="var(--green-light)"/>
+  </g>
 
-      <!-- STAGE 3: medium -->
-      <g id="stage3" class="sg" opacity="0">
-        <line x1="54" y1="139" x2="54" y2="66" stroke="var(--green-dark)" stroke-width="3.2" stroke-linecap="round"/>
-        <path d="M54 126 Q15 110 17 80 Q31 74 36 88 Q34 96 39 103 Q46 109 54 126Z" fill="var(--green-dark)"/>
-        <path d="M35 89 Q30 98 33 106" stroke="#f6f4f0" stroke-width="2.3" fill="none" stroke-linecap="round"/>
-        <path d="M22 86 Q19 95 21 103" stroke="#f6f4f0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <path d="M54 106 Q90 86 88 60 Q75 56 69 70 Q72 78 69 85 Q63 91 54 106Z" fill="var(--green-mid)"/>
-        <path d="M70 71 Q75 80 72 87" stroke="#f6f4f0" stroke-width="2.3" fill="none" stroke-linecap="round"/>
-        <path d="M82 64 Q86 73 84 80" stroke="#f6f4f0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <path d="M54 82 Q39 63 45 48 Q55 51 57 63 Q60 72 54 82Z" fill="var(--green-light)"/>
-        <path d="M49 53 Q45 61 47 68" stroke="#f6f4f0" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-      </g>
+  <!-- STAGE 3: medium -->
+  <g id="stage3" class="sg" opacity="0">
+    <line x1="54" y1="139" x2="54" y2="66" stroke="var(--green-dark)" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M54 126 Q15 110 17 80 Q31 74 36 88 Q34 96 39 103 Q46 109 54 126Z" fill="var(--green-dark)"/>
+    <path d="M35 89 Q30 98 33 106" stroke="#f6f4f0" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+    <path d="M22 86 Q19 95 21 103" stroke="#f6f4f0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M54 106 Q90 86 88 60 Q75 56 69 70 Q72 78 69 85 Q63 91 54 106Z" fill="var(--green-mid)"/>
+    <path d="M70 71 Q75 80 72 87" stroke="#f6f4f0" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+    <path d="M82 64 Q86 73 84 80" stroke="#f6f4f0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M54 82 Q39 63 45 48 Q55 51 57 63 Q60 72 54 82Z" fill="var(--green-light)"/>
+    <path d="M49 53 Q45 61 47 68" stroke="#f6f4f0" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+  </g>
 
-      <!-- STAGE 4: full lush -->
-      <g id="stage4" class="sg" opacity="0">
-        <line x1="54" y1="139" x2="54" y2="44" stroke="var(--green-dark)" stroke-width="4" stroke-linecap="round"/>
-        <!-- bot left -->
-        <path d="M53 134 Q7 114 5 74 Q21 66 27 82 Q23 92 29 100 Q38 107 53 134Z" fill="var(--green-dark)"/>
-        <path d="M26 83 Q21 94 24 103" stroke="#f6f4f0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path d="M11 82 Q8 93 10 101" stroke="#f6f4f0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <!-- bot right -->
-        <path d="M55 128 Q99 106 101 68 Q86 60 79 75 Q83 84 79 92 Q72 99 55 128Z" fill="var(--green-dark)"/>
-        <path d="M80 76 Q85 86 82 94" stroke="#f6f4f0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path d="M94 71 Q98 81 96 89" stroke="#f6f4f0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <!-- mid left -->
-        <path d="M54 108 Q23 92 21 66 Q35 60 41 74 Q39 81 43 88 Q49 93 54 108Z" fill="var(--green-mid)"/>
-        <path d="M40 75 Q36 83 38 90" stroke="#f6f4f0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <!-- mid right -->
-        <path d="M54 94 Q86 74 84 49 Q71 45 65 58 Q69 65 65 72 Q60 78 54 94Z" fill="var(--green-mid)"/>
-        <path d="M66 59 Q70 67 67 74" stroke="#f6f4f0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <!-- top left -->
-        <path d="M53 72 Q30 53 33 35 Q45 33 49 46 Q47 53 51 59Z" fill="var(--green-light)"/>
-        <path d="M48 47 Q44 55 46 61" stroke="#f6f4f0" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-        <!-- top right -->
-        <path d="M55 64 Q77 44 73 26 Q61 24 57 36 Q61 43 57 50Z" fill="var(--green-light)"/>
-        <path d="M58 37 Q62 45 59 51" stroke="#f6f4f0" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-        <!-- crown bud -->
-        <ellipse cx="54" cy="42" rx="7" ry="5" fill="var(--green-pale)"/>
-      </g>
+  <!-- STAGE 4: full lush -->
+  <g id="stage4" class="sg" opacity="0">
+    <line x1="54" y1="139" x2="54" y2="44" stroke="var(--green-dark)" stroke-width="4" stroke-linecap="round"/>
+    <!-- bot left -->
+    <path d="M53 134 Q7 114 5 74 Q21 66 27 82 Q23 92 29 100 Q38 107 53 134Z" fill="var(--green-dark)"/>
+    <path d="M26 83 Q21 94 24 103" stroke="#f6f4f0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M11 82 Q8 93 10 101" stroke="#f6f4f0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <!-- bot right -->
+    <path d="M55 128 Q99 106 101 68 Q86 60 79 75 Q83 84 79 92 Q72 99 55 128Z" fill="var(--green-dark)"/>
+    <path d="M80 76 Q85 86 82 94" stroke="#f6f4f0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M94 71 Q98 81 96 89" stroke="#f6f4f0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <!-- mid left -->
+    <path d="M54 108 Q23 92 21 66 Q35 60 41 74 Q39 81 43 88 Q49 93 54 108Z" fill="var(--green-mid)"/>
+    <path d="M40 75 Q36 83 38 90" stroke="#f6f4f0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <!-- mid right -->
+    <path d="M54 94 Q86 74 84 49 Q71 45 65 58 Q69 65 65 72 Q60 78 54 94Z" fill="var(--green-mid)"/>
+    <path d="M66 59 Q70 67 67 74" stroke="#f6f4f0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <!-- top left -->
+    <path d="M53 72 Q30 53 33 35 Q45 33 49 46 Q47 53 51 59Z" fill="var(--green-light)"/>
+    <path d="M48 47 Q44 55 46 61" stroke="#f6f4f0" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <!-- top right -->
+    <path d="M55 64 Q77 44 73 26 Q61 24 57 36 Q61 43 57 50Z" fill="var(--green-light)"/>
+    <path d="M58 37 Q62 45 59 51" stroke="#f6f4f0" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <!-- crown bud -->
+    <ellipse cx="54" cy="42" rx="7" ry="5" fill="var(--green-pale)"/>
+  </g>
 
-    </svg>
+</svg>
+```
+
   </div>
 
   <div class="stage-label" id="stageLabel">waiting to grow</div>
@@ -388,11 +393,35 @@
     100:"100 days 👑"
   };
 
-  function getState() {
-    try { const r = localStorage.getItem('monstera_v4'); if (r) return JSON.parse(r); } catch(e) {}
+  // ── JSONbin storage ──────────────────────────────────────
+  const BIN_ID  = '69b0e1391687bc351c7c4633';
+  const API_KEY = '$2a$10$YJRS5A0ezItimuE0YbEK/.Ca1UUhStRrJax.4zYQos3pmVKjwkPWG';
+  const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+  let _cache = null; // in-memory cache so render() is instant
+
+  async function getState() {
+    if (_cache) return _cache;
+    try {
+      const r = await fetch(BIN_URL + '/latest', {
+        headers: { 'X-Master-Key': API_KEY }
+      });
+      const j = await r.json();
+      _cache = j.record;
+      return _cache;
+    } catch(e) {}
     return { stage: -1, lastWatered: null, streak: 0, bestStreak: 0 };
   }
-  function saveState(s) { try { localStorage.setItem('monstera_v4', JSON.stringify(s)); } catch(e) {} }
+
+  async function saveState(s) {
+    _cache = s;
+    try {
+      await fetch(BIN_URL, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+        body: JSON.stringify(s)
+      });
+    } catch(e) {}
+  }
 
   function today() { const d = new Date(); return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`; }
   function yesterday() { const d = new Date(); d.setDate(d.getDate()-1); return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`; }
@@ -404,8 +433,8 @@
     return null;
   }
 
-  function render() {
-    const st = getState();
+  async function render() {
+    const st = await getState();
     const watered = st.lastWatered === today();
 
     for (let i = 0; i < TOTAL; i++) {
@@ -456,8 +485,8 @@
     }
   }
 
-  function water() {
-    const st = getState();
+  async function water() {
+    const st = await getState();
     if (st.lastWatered === today()) return;
 
     // Streak logic: if watered yesterday, continue; else reset to 1
@@ -524,14 +553,14 @@
   }
 
   // On load: if last watered wasn't today or yesterday, streak is broken
-  (function checkStreakOnLoad() {
-    const st = getState();
+  (async function checkStreakOnLoad() {
+    const st = await getState();
     if (st.lastWatered && st.lastWatered !== today() && st.lastWatered !== yesterday()) {
-      saveState({ ...st, streak: 0 });
+      await saveState({ ...st, streak: 0 });
     }
+    render();
   })();
-
-  render();
 </script>
+
 </body>
 </html>

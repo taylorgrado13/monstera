@@ -276,7 +276,7 @@ pointer-events: none;
 
   <div class="divider"></div>
 
-  <div class="plant-area">
+  <div class="plant-area" onclick="spawnHearts()" style="cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none">
     <svg class="plant-svg" id="plantSvg" viewBox="0 0 108 165" width="108" height="165" xmlns="http://www.w3.org/2000/svg">
 
 ```
@@ -287,23 +287,23 @@ pointer-events: none;
   <ellipse cx="54" cy="141" rx="25.5" ry="4.5" fill="#6b4c33"/>
   <ellipse cx="54" cy="139.5" rx="25.5" ry="4.5" fill="#8c6240"/>
 
-  <!-- STAGE 0: tiny sprout -->
-  <g id="stage0" class="sg" opacity="0">
+  <!-- STAGE 1: tiny sprout -->
+  <g id="stage1" class="sg" opacity="0">
     <line x1="54" y1="139" x2="54" y2="120" stroke="#4a6741" stroke-width="1.8" stroke-linecap="round"/>
     <path d="M54 120 Q45 113 47 105 Q55 110 54 120Z" fill="#6a9160"/>
     <line x1="51" y1="114" x2="47" y2="107" stroke="#4a6741" stroke-width="0.7" opacity="0.45"/>
   </g>
 
-  <!-- STAGE 1: seedling -->
-  <g id="stage1" class="sg" opacity="0">
+  <!-- STAGE 2: little seedling -->
+  <g id="stage2" class="sg" opacity="0">
     <line x1="54" y1="139" x2="54" y2="106" stroke="#4a6741" stroke-width="2.2" stroke-linecap="round"/>
     <path d="M54 118 Q41 108 43 96 Q53 102 54 118Z" fill="#6a9160"/>
     <path d="M54 110 Q66 100 64 89 Q55 96 54 110Z" fill="#8ab878"/>
     <ellipse cx="54" cy="105" rx="4.5" ry="3" fill="#c2d9b8" opacity="0.9"/>
   </g>
 
-  <!-- STAGE 2: small plant -->
-  <g id="stage2" class="sg" opacity="0">
+  <!-- STAGE 3: growing up -->
+  <g id="stage3" class="sg" opacity="0">
     <line x1="54" y1="139" x2="54" y2="88" stroke="#4a6741" stroke-width="2.8" stroke-linecap="round"/>
     <path d="M54 116 Q31 102 33 86 Q45 85 49 98 Q52 108 54 116Z" fill="#4a6741"/>
     <path d="M40 90 Q36 98 38 104" stroke="#f6f4f0" stroke-width="2" fill="none" stroke-linecap="round"/>
@@ -312,8 +312,8 @@ pointer-events: none;
     <ellipse cx="54" cy="87" rx="5" ry="3.5" fill="#8ab878"/>
   </g>
 
-  <!-- STAGE 3: medium -->
-  <g id="stage3" class="sg" opacity="0">
+  <!-- STAGE 4: getting leafy -->
+  <g id="stage4" class="sg" opacity="0">
     <line x1="54" y1="139" x2="54" y2="66" stroke="#4a6741" stroke-width="3.2" stroke-linecap="round"/>
     <path d="M54 126 Q15 110 17 80 Q31 74 36 88 Q34 96 39 103 Q46 109 54 126Z" fill="#4a6741"/>
     <path d="M35 89 Q30 98 33 106" stroke="#f6f4f0" stroke-width="2.3" fill="none" stroke-linecap="round"/>
@@ -325,30 +325,23 @@ pointer-events: none;
     <path d="M49 53 Q45 61 47 68" stroke="#f6f4f0" stroke-width="1.4" fill="none" stroke-linecap="round"/>
   </g>
 
-  <!-- STAGE 4: full lush -->
-  <g id="stage4" class="sg" opacity="0">
+  <!-- STAGE 5: fully grown -->
+  <g id="stage5" class="sg" opacity="0">
     <line x1="54" y1="139" x2="54" y2="44" stroke="#4a6741" stroke-width="4" stroke-linecap="round"/>
-    <!-- bot left -->
     <path d="M53 134 Q7 114 5 74 Q21 66 27 82 Q23 92 29 100 Q38 107 53 134Z" fill="#4a6741"/>
     <path d="M26 83 Q21 94 24 103" stroke="#f6f4f0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
     <path d="M11 82 Q8 93 10 101" stroke="#f6f4f0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <!-- bot right -->
     <path d="M55 128 Q99 106 101 68 Q86 60 79 75 Q83 84 79 92 Q72 99 55 128Z" fill="#4a6741"/>
     <path d="M80 76 Q85 86 82 94" stroke="#f6f4f0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
     <path d="M94 71 Q98 81 96 89" stroke="#f6f4f0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <!-- mid left -->
     <path d="M54 108 Q23 92 21 66 Q35 60 41 74 Q39 81 43 88 Q49 93 54 108Z" fill="#6a9160"/>
     <path d="M40 75 Q36 83 38 90" stroke="#f6f4f0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <!-- mid right -->
     <path d="M54 94 Q86 74 84 49 Q71 45 65 58 Q69 65 65 72 Q60 78 54 94Z" fill="#6a9160"/>
     <path d="M66 59 Q70 67 67 74" stroke="#f6f4f0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <!-- top left -->
     <path d="M53 72 Q30 53 33 35 Q45 33 49 46 Q47 53 51 59Z" fill="#8ab878"/>
     <path d="M48 47 Q44 55 46 61" stroke="#f6f4f0" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-    <!-- top right -->
     <path d="M55 64 Q77 44 73 26 Q61 24 57 36 Q61 43 57 50Z" fill="#8ab878"/>
     <path d="M58 37 Q62 45 59 51" stroke="#f6f4f0" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-    <!-- crown bud -->
     <ellipse cx="54" cy="42" rx="7" ry="5" fill="#c2d9b8"/>
   </g>
 
@@ -382,8 +375,8 @@ pointer-events: none;
 </div>
 
 <script>
-  const TOTAL = 5;
-  const LABELS = ["tiny sprout","little seedling","growing up","getting leafy","fully grown ✦"];
+  const TOTAL = 6;  // stages 0–5: 0=empty pot, 1=sprout, 2=seedling, 3=growing, 4=leafy, 5=full
+  const LABELS = ["empty pot","tiny sprout","little seedling","growing up","getting leafy","fully grown ✦"];
 
   // Milestone badges at these streak lengths
   const BADGES = {
@@ -408,18 +401,10 @@ pointer-events: none;
         headers: { 'X-Master-Key': API_KEY }
       });
       const j = await r.json();
-      const rec = j.record;
-      // Guard: if bin has a positive stage but no watering history, it's stale — reset it
-      if (rec && rec.stage > -1 && !rec.lastWatered) {
-        const clean = { stage: -1, lastWatered: null, streak: 0, bestStreak: 0 };
-        _cache = clean;
-        saveState(clean);
-        return clean;
-      }
-      _cache = rec;
+      _cache = j.record;
       return _cache;
     } catch(e) {}
-    return { stage: -1, lastWatered: null, streak: 0, bestStreak: 0 };
+    return { stage: 0, lastWatered: null, streak: 0, bestStreak: 0 };
   }
 
   async function saveState(s) {
@@ -447,18 +432,20 @@ pointer-events: none;
     const st = await getState();
     const watered = st.lastWatered === today();
 
-    for (let i = 0; i < TOTAL; i++) {
+    // stage 0 = empty pot (no plant group shown), stages 1-5 show plant
+    for (let i = 1; i < TOTAL; i++) {
       const el = document.getElementById('stage' + i);
       if (el) el.style.opacity = i === st.stage ? '1' : '0';
     }
 
     document.getElementById('stageLabel').textContent =
-      st.stage === -1 ? 'waiting to grow' : LABELS[st.stage];
+      st.stage === 0 ? 'waiting to grow' : LABELS[st.stage];
 
     const dotsEl = document.getElementById('progressDots');
     dotsEl.innerHTML = '';
-    if (st.stage >= 0) {
-      for (let i = 0; i < TOTAL; i++) {
+    // only show dots once plant has sprouted
+    if (st.stage >= 1) {
+      for (let i = 1; i < TOTAL; i++) {
         const d = document.createElement('div');
         d.className = 'dot' + (i < st.stage ? ' filled' : '') + (i === st.stage ? ' current' : '');
         dotsEl.appendChild(d);
@@ -474,15 +461,12 @@ pointer-events: none;
     } else {
       btn.disabled = false;
       btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C9 8 5 11 5 15a7 7 0 0 0 14 0c0-4-4-7-7-13z"/></svg> water today`;
-      msg.textContent = st.stage === -1 ? 'give it a little drink 💧' : "it's thirsty! 💧";
+      msg.textContent = st.stage === 0 ? 'give it a little drink 💧' : "it's thirsty! 💧";
     }
 
-    // Streak display
     const streak = st.streak || 0;
-    const best = st.bestStreak || 0;
     const countEl = document.getElementById('streakCount');
     countEl.innerHTML = `${streak}<span>days</span>`;
-
 
     const badge = getBadge(streak);
     const badgeEl = document.getElementById('streakBadge');
@@ -499,16 +483,15 @@ pointer-events: none;
     const st = await getState();
     if (st.lastWatered === today()) return;
 
-    // Streak logic: if watered yesterday, continue; else reset to 1
     const wasYesterday = st.lastWatered === yesterday();
     const newStreak = wasYesterday ? (st.streak || 0) + 1 : 1;
     const newBest = Math.max(st.bestStreak || 0, newStreak);
 
-    // stage -1 = empty pot, advance to 0 on first water
-    // stages 0–4 = plant growth, reset to -1 after stage 4
+    // stage 0 = pot → advances to 1 (sprout) on first water
+    // stage 5 = fully grown → resets back to 0 (empty pot)
     let newStage = st.stage + 1;
     const reset = newStage >= TOTAL;
-    if (reset) newStage = -1;
+    if (reset) newStage = 0;
 
     const newState = { stage: newStage, lastWatered: today(), streak: newStreak, bestStreak: newBest };
     saveState(newState);
@@ -569,6 +552,21 @@ pointer-events: none;
     _cache = null;
     await saveState({ stage: -1, lastWatered: null, streak: 0, bestStreak: 0 });
     render();
+  }
+
+  function spawnHearts() {
+    const c = document.getElementById('dropsContainer');
+    const hearts = ['🤍','💚','🩶'];
+    for (let i = 0; i < 7; i++) {
+      setTimeout(() => {
+        const el = document.createElement('div');
+        el.className = 'drop';
+        el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        el.style.cssText = `left:${20+Math.random()*60}%;top:${10+Math.random()*40}%;font-size:${10+Math.random()*7}px`;
+        c.appendChild(el);
+        setTimeout(() => el.remove(), 1100);
+      }, i * 70);
+    }
   }
 
   // On load: if last watered wasn't today or yesterday, streak is broken

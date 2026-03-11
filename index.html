@@ -170,8 +170,8 @@ align-items: center;
 justify-content: space-between;
 width: 100%;
 padding: 9px 12px;
-background: var(–bg);
-border: 1px solid var(–border-light);
+background: #F0EFED;
+border: 1px solid #e8e5df;
 border-radius: 9px;
 }
 
@@ -377,6 +377,7 @@ pointer-events: none;
       <div class="streak-badge" id="streakBadge"></div>
     </div>
   </div>
+
 </div>
 
 <script>
@@ -494,6 +495,8 @@ pointer-events: none;
     const newStreak = wasYesterday ? (st.streak || 0) + 1 : 1;
     const newBest = Math.max(st.bestStreak || 0, newStreak);
 
+    // stage -1 = empty pot, advance to 0 on first water
+    // stages 0–4 = plant growth, reset to -1 after stage 4
     let newStage = st.stage + 1;
     const reset = newStage >= TOTAL;
     if (reset) newStage = -1;
@@ -550,6 +553,13 @@ pointer-events: none;
         setTimeout(() => el.remove(), 1000);
       }, i * 85);
     }
+  }
+
+  async function resetPlant() {
+    if (!confirm('Reset plant back to empty pot? Your streak will also reset.')) return;
+    _cache = null;
+    await saveState({ stage: -1, lastWatered: null, streak: 0, bestStreak: 0 });
+    render();
   }
 
   // On load: if last watered wasn't today or yesterday, streak is broken

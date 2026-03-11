@@ -42,8 +42,8 @@ font-family: ‘DM Sans’, sans-serif;
 }
 
 .widget {
-background: var(–surface);
-border: 1px solid var(–border);
+background: #ffffff;
+border: 1.5px solid #c8c3bb;
 border-radius: 14px;
 width: 196px;
 padding: 20px 18px 18px;
@@ -53,6 +53,7 @@ align-items: center;
 gap: 13px;
 position: relative;
 overflow: hidden;
+box-shadow: 0 1px 4px rgba(43,40,37,0.07);
 }
 
 .header {
@@ -407,7 +408,15 @@ pointer-events: none;
         headers: { 'X-Master-Key': API_KEY }
       });
       const j = await r.json();
-      _cache = j.record;
+      const rec = j.record;
+      // Guard: if bin has a positive stage but no watering history, it's stale — reset it
+      if (rec && rec.stage > -1 && !rec.lastWatered) {
+        const clean = { stage: -1, lastWatered: null, streak: 0, bestStreak: 0 };
+        _cache = clean;
+        saveState(clean);
+        return clean;
+      }
+      _cache = rec;
       return _cache;
     } catch(e) {}
     return { stage: -1, lastWatered: null, streak: 0, bestStreak: 0 };
